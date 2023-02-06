@@ -1,0 +1,101 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Taj Mahal & Romance</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    header {
+      background-color: rgb(44, 119, 132);
+      padding: 1em;
+      text-align: center;
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2em;
+    }
+    h1 {
+      font-size: 2em;
+      margin: 1em 0;
+    }
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1em;
+      max-width: 400px;
+      padding: 2em;
+      text-align: center;
+    }
+    p {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script>
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
+
+    "esri/layers/FeatureLayer"
+
+  ], function(esriConfig,Map, MapView, FeatureLayer) {
+
+  //esriConfig.apiKey = "YOUR_API_KEY";
+
+  const map = new Map({
+    basemap: "hybrid"
+  });
+
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [78.04216365505015,27.175345217946063],
+    zoom: 17
+
+  });
+
+//Trailheads feature layer (points)
+  const trailheadsLayer = new FeatureLayer({
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/Taj_Romantic_Paradise/FeatureServer/0"
+  });
+
+  map.add(trailheadsLayer);
+
+  map.add(parksLayer, 0);
+
+  });
+</script>
+
+</head>
+<body>
+    <div id="viewDiv"></div>
+  <header>
+    <h1>Proclaim Your Love Beneath The Taj's Beauty!</h1>
+  </header>
+  <main>
+    <div class="card">
+
+      <h2>Taj Mahal</h2>
+      <p>In the land of love and ancient tales,
+        Stands a monument that never fails,
+        To stir the hearts and capture the gaze,
+        Of all who visit in romantic daze.</p>
+    </div>
+      </body>
+      </html>
